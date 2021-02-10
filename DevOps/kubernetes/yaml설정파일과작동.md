@@ -148,7 +148,7 @@ spec:
 
 ```
 ***
-**기타 명령어**
+**기타 명령어**  
 kubectl get pods -o wide를 이용하여 더 많은 정보를 볼수가 있다.  
 kubectl get deployment nginx-deployment -o yaml // deployment를 yaml파일 형식으로 볼 수 있음.  
 해당 yaml파일 내용을 다른 파일에다 써서 일부 내용을 지우면 우리가 다시 apply할 수 있는 yaml파일로 사용 가능하다.
