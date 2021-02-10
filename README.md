@@ -9,5 +9,6 @@
   - ###  K8S   
       - [쿠버네티스 참고용 정리](https://github.com/BenKwon/study-record/tree/main/DevOps/kubernetes) 
       
-##  - [알고리즘 풀이](https://github.com/BenKwon/CODILITY-LESSON) 
+##  - Algorithm
+  - [문제풀이](https://github.com/BenKwon/CODILITY-LESSON) 
 
