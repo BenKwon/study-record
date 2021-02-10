@@ -93,10 +93,12 @@ spec:selector:app:에 붙는다. metadata에 붙는 경우는 자기 자신 (컴
 ![image](https://user-images.githubusercontent.com/22045187/107498263-e723f980-6bd6-11eb-953f-e4e0c939aef5.png)
 
 Service에서는 targetPort는 타겟 pod의 포트이다. 해당 서비스와 위 적힌 80포트를 이용하면 해당 팟으로 포워딩 된다.  
-ex) DB Servcie에서 nginx Service로 포트 80 으로 연결하면 nginx service에서 포트 8080으로 pod으로 연결된다. DB SERVICE -> NGINX SERVICE -> POD
+ex) DB Servcie에서 nginx Service로 포트 80 으로 연결하면 nginx service에서 포트 8080으로 pod으로 연결된다.   
+DB SERVICE -> NGINX SERVICE -> POD
 
 ***
-kubectl get pods -o wide를 이용하여 더 많은 정보를 볼수가 있다.
-kubectl get deployment nginx-deployment -o yaml // deployment를 yaml파일 형식으로 볼 수 있음. 해당 yaml파일 내용을 다른 파일에다   
-써서 일부 내용을 지우면 우리가 다시 apply할 수 있는 yaml파일로 사용 가능하다.
+**기타 명령어**
+kubectl get pods -o wide를 이용하여 더 많은 정보를 볼수가 있다.  
+kubectl get deployment nginx-deployment -o yaml // deployment를 yaml파일 형식으로 볼 수 있음.  
+해당 yaml파일 내용을 다른 파일에다 써서 일부 내용을 지우면 우리가 다시 apply할 수 있는 yaml파일로 사용 가능하다.
 ***
