@@ -96,6 +96,57 @@ Service에서는 targetPort는 타겟 pod의 포트이다. 해당 서비스와 �
 ex) DB Servcie에서 nginx Service로 포트 80 으로 연결하면 nginx service에서 포트 8080으로 pod으로 연결된다.   
 DB SERVICE -> NGINX SERVICE -> POD
 
+## Service와 deployment configuration 같이 쓰기
+> 일반적으로 함께 사용되는 컴퍼넌트들은 한 yaml파일에 정의하기도 한다.
+#### mongodb와 이를 위한 서비스를 한 yaml파일에 
+```yaml
+# mongo.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+  labels:
+    app: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo
+        ports:
+        - containerPort: 27017
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-username
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+spec:
+  selector:
+    app: mongodb
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+
+```
 ***
 **기타 명령어**
 kubectl get pods -o wide를 이용하여 더 많은 정보를 볼수가 있다.  
