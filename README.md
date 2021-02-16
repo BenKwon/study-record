@@ -8,7 +8,8 @@
 ##  - DevOps 
   - ###  K8S   
       - [쿠버네티스 참고용 정리](https://github.com/BenKwon/study-record/tree/main/DevOps/kubernetes) 
-      
+  - ###  Jenkins  
+      - [젠킨스 참고용 정리](https://github.com/BenKwon/study-record/tree/main/DevOps/jenkins) 
 ##  - Algorithm
   - [문제풀이](https://github.com/BenKwon/CODILITY-LESSON) 
 
