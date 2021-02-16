@@ -16,7 +16,7 @@
 - 워커 노드(worker1) : e2-medium(vCPU 2개, 4GB) 메모리, Ubuntu 18.04 LTS  
 
 
-## 마스터 노드 & 워커 노드 공통 
+## - 마스터 노드 & 워커 노드 공통 
 1. 각 노드에 hostname을 설정해준다.
 
 ```cmd
@@ -90,7 +90,7 @@ EOF
 $ sysctl --system
 ```
 
-## 마스터 노드 세팅
+## - 마스터 노드 세팅
 1. 쿠버네티스 클러스터를 초기화
 ```cmd
 $ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
@@ -109,7 +109,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 
-## 워커 노드 세팅
+## - 워커 노드 세팅
 ```cmd
 kubeadm join 10.128.0.8:6443 --token 04v6u8.abm0eq0t3dbet0m2 \
 >     --discovery-token-ca-cert-hash sha256:c80ce023e3c9161bc9d0cb065bdaf4297bcadc370a3868d261471ec2cd9be1a4
