@@ -1,6 +1,5 @@
 # GCS에 K8S 환경 구축하기
->사실 GKE(google kubernetes engine)를 쓰면 되지만 이전에 virtual box에서 쿠버네티스를 다뤄본 경험이 있어 Compute Engine으로 구축을 하는것이  
-더 편하다고 생각되고 젠킨스랑 연동할때도 추가적인 웹 서칭없이 스스로 바로 가능할 것 같아서 Compute Engine에 마스터노드와 워커 노드를 만들기로 하였다.
+>사실 GKE(google kubernetes engine)를 쓰면 되지만 이전에 virtual box에서 쿠버네티스를 다뤄본 경험이 있어 Compute Engine으로 구축을 하는것이 더 편하다고 생각되고 젠킨스랑 연동할때도 추가적인 웹 서칭없이 스스로 바로 가능할 것 같아서 Compute Engine에 마스터노드와 워커 노드를 만들기로 하였다.
 
 ## 노드 최소 사양
 - 마스터 노드 : CPU 2코어, 램 2기가
