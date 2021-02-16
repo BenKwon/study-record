@@ -92,10 +92,13 @@ $ sysctl --system
 
 ## - 마스터 노드 세팅
 1. 쿠버네티스 클러스터를 초기화
+
 ```cmd
 $ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+```
 
 2. Set up Local Kubeconfig
+
 ```cmd
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
