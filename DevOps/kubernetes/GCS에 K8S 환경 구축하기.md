@@ -116,7 +116,7 @@ sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Do
 kubeadm join 10.128.0.8:6443 --token 04v6u8.abm0eq0t3dbet0m2 \
 >     --discovery-token-ca-cert-hash sha256:c80ce023e3c9161bc9d0cb065bdaf4297bcadc370a3868d261471ec2cd9be1a4
 ```
-위 명령어는 마스터 노드에서 init을 하면 출력되는 명령어이다. 이 명령어를 워커 노드에서 실행하면 마스터 노드에 등록 된다.  
+
 
 
 
@@ -125,3 +125,8 @@ kubeadm join 10.128.0.8:6443 --token 04v6u8.abm0eq0t3dbet0m2 \
 ```cmd
 kubeadm reset
 ```
+아래 명령어는 마스터 노드에서 init을 하면 출력되는 명령어이다. 이 명령어를 워커 노드에서 실행하면 마스터 노드에 등록 된다.  
+```cmd
+export KUBECONFIG=/etc/kubernetes/admin.conf
+```
+
