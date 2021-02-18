@@ -1,6 +1,14 @@
 # JenkinsPipeline
 > Build Test, Contract Test, DockerHub Pusy, deploy on k8s cluster가 포함된 파이프라인을 구현하려고 한다.
+파이프라인의 Scripted 문법을 이용해서 자유롭게 파이프라인을 구성할 수 있다. Scripted 문법은 Groovy 문법을 사용한다.
 
+## 문법
+- node : Scripted 파이프라인을 실행할 젠킨스 에이전트
+- dir : 명령을 수행할 디렉토리 설정
+- stage : 파이프라인의 각 단계를 선언
+- git : Git에서 프로젝트를 Clone
+- sh : 명령어 실행
+- def : Groovt 변수 혹은 함수 선언 (JS의 var와 같은 개념으로 이해하면 좋음)
 
 ## 기본 pipeline 사용법
 1. 새로운 item을 Pipeline으로 하나 생성한다.
@@ -13,14 +21,21 @@
 **스크립트 예시**
 ```script
  node('에이전트 노드 명') {  
+      def example_var = "Hello World"
+      stage('clone'){
+          git 'https://깃레포지터리주소'
+      }
+      dir('some_dir'){
+         sh 'ls -al'
+      }
       stage('Build') { 
-          build 'Test'
+         // build 'Test'
       }
       stage('Push Image') { 
-          build 'docker-push'
+         // build 'docker-push'
       }
       stage('Deploy') { 
-          build 'deploy-k8s'
+        //  build 'deploy-k8s'
       }
   }
 ```
