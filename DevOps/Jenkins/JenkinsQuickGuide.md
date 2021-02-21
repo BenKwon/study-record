@@ -51,7 +51,7 @@ java -jar agent.jar -jnlpUrl http://my-master-ip:8080/computer/slave-1/slave-age
 ## 3. FreeStyle Project에서의 노드 선택
 > 이제 slave node를 생성했으니 내가 진행할 job이 어느 노드에서 실행되게 할지 선택 가능하다. 물론 pipeline과 같이 스크립트를 통해서도 노드를 선택할 수 있으나 여기서는  
 일반 job에서의 등록 방법만 적어놓겠다.
-1.FreeStyle Prjocet를 생성한다.
-2.해당 프로젝트 설정에서 노드를 지정한다. 
+1. FreeStyle Prjocet를 생성한다.
+2. 해당 프로젝트 설정에서 노드를 지정한다. 
 ![image](https://user-images.githubusercontent.com/22045187/108361383-bdea1580-7235-11eb-996e-6c29475e478b.png)
 위 사진에서 파란색 부분에 생성해둔 slave node의 이름을 적으면 된다.
