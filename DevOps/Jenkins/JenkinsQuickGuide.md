@@ -48,6 +48,41 @@ java -jar agent.jar -jnlpUrl http://my-master-ip:8080/computer/slave-1/slave-age
 ```
 위와 같은 형식의 커맨드 라인을 보여줄텐데 agent.jar을 다운해서 slave 노드에서 다운로드된 경로에서 해당 커맨드 라인을 실행하면 slave node로 등록된다.
 
+#### 3. 젠킨스 시스템 서비스 등록
+> 구글 컴퓨트 엔진에 있는 slave node를 ssh로 접속하여서 2번 과정의 명렁어를 입력하고 해당 SSH를 종료하면 SLAVE-MASTER 커넥션이 계속 끊어졌다.  
+따라서 SLAVE노드에서 젠킨스를 Systemctl servcie로 등록하여 항상 켜져있을수 있도록 설정하는 과정이다.
+1. /etc/systemd/system 디렉토리에 jenkins.slave.service 파일을 생성하고 환경 변수를 설정한다. (2번과정의 명령어에 적혀있는거 옮겨 적으면된다.)  
+```service
+[Unit]
+Description=Jenkins Slave On Premise Executor
+Wants=network.target
+After=syslog.target network.target
+ 
+[Service]
+# EnvironmentFile cannnot be used on Debian/Ubuntu anymore - Reference: https://github.com/varnishcache/pkg-varnish-cache/issues/24
+# So we are using drop-in config /etc/systemd/system/jenkinsope.service.d/local.conf
+Environment=MASTER_URL=http://master-url:8080
+Environment=SLAVE_NAME=젠킨스에서 추가한 슬레이브 노드명
+Environment=SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Environment=WORK_DIR=젠킨스 노드설정에서 설정한 작업 경로
+ExecStart=/usr/bin/java -jar ${WORK_DIR}/agent.jar -jnlpUrl ${MASTER_URL}/computer/${SLAVE_NAME}/slave-agent.jnlp -secret ${SECRET} -workDir ${WORK_DIR}
+ 
+User=XXXX
+Restart=always
+RestartSec=10
+StartLimitInterval=0
+ 
+[Install]
+WantedBy=multi-user.target
+```
+2. 아래 명령어를 차례대로 실행한다.
+```sh
+$ sudo systemctl daemon-reload   #추가한 jenkins service를 로드
+$ sudo systemctl enable jenkins.slave.service  #jenkins 서비스를 항시 자동 실행하도록 enable
+$ sudo systemctl start jenkins.slave.service  #jenkins 서비스 실행
+$ sudo systemctl status jenkins.slave.service # active확인 
+```
+
 ## 3. FreeStyle Project에서의 노드 선택
 > 이제 slave node를 생성했으니 내가 진행할 job이 어느 노드에서 실행되게 할지 선택 가능하다. 물론 pipeline과 같이 스크립트를 통해서도 노드를 선택할 수 있으나 여기서는  
 일반 job에서의 등록 방법만 적어놓겠다.
