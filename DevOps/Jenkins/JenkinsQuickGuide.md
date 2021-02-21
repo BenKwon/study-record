@@ -54,24 +54,18 @@ java -jar agent.jar -jnlpUrl http://my-master-ip:8080/computer/slave-1/slave-age
 1. /etc/systemd/system 디렉토리에 jenkins.slave.service 파일을 생성하고 환경 변수를 설정한다. (2번과정의 명령어에 적혀있는거 옮겨 적으면된다.)  
 ```service
 [Unit]
-Description=Jenkins Slave On Premise Executor
-Wants=network.target
-After=syslog.target network.target
- 
+Description=Jenkins JNLP Slave service
+After=network.target
+
 [Service]
-# EnvironmentFile cannnot be used on Debian/Ubuntu anymore - Reference: https://github.com/varnishcache/pkg-varnish-cache/issues/24
-# So we are using drop-in config /etc/systemd/system/jenkinsope.service.d/local.conf
 Environment=MASTER_URL=http://master-url:8080
 Environment=SLAVE_NAME=젠킨스에서 추가한 슬레이브 노드명
 Environment=SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Environment=WORK_DIR=젠킨스 노드설정에서 설정한 작업 경로
-ExecStart=/usr/bin/java -jar ${WORK_DIR}/agent.jar -jnlpUrl ${MASTER_URL}/computer/${SLAVE_NAME}/slave-agent.jnlp -secret ${SECRET} -workDir ${WORK_DIR}
+Environment=JAR_DIR=agent.jar파일 경로
+ExecStart=/usr/bin/java -jar ${JAR_DIR}/agent.jar -jnlpUrl ${MASTER_URL}/computer/${SLAVE_NAME}/slave-agent.jnlp -secret ${SECRET} -workDir ${WORK_DIR}
  
-User=XXXX
-Restart=always
-RestartSec=10
-StartLimitInterval=0
- 
+
 [Install]
 WantedBy=multi-user.target
 ```
