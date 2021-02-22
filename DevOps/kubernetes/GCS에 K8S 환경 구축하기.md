@@ -122,12 +122,21 @@ kubeadm join 10.128.0.8:6443 --token 04v6u8.abm0eq0t3dbet0m2 \
 
 
 ### 참고
-가끔 오류가 나거나 재부팅시 kubeadm init을 해서 쿠버네티스를 다시 초기화 시켜주는데 이때 오류가 나면 보통 하단의 명령어로 해결된다.  
+- 가끔 오류가 나거나 재부팅시 kubeadm init을 해서 쿠버네티스를 다시 초기화 시켜주는데 이때 오류가 나면 보통 하단의 명령어로 해결된다.  
 ```cmd
 kubeadm reset
 ```
- 
+- x509: certificate signed by unknown authority 
 ```cmd
 export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
+
+- 마스터 노드 Not Ready
+```
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+systemctl restart kubelet
+kubectl get nodes
+```
+https://github.com/kubernetes/kubeadm/issues/1031
+
 
