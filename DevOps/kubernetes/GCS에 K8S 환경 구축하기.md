@@ -131,12 +131,12 @@ kubeadm reset
 export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
 
-- 마스터 노드 Not Ready
+- 마스터 노드 Not Ready(https://github.com/kubernetes/kubeadm/issues/1031)
 ```
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 systemctl restart kubelet
 kubectl get nodes
 ```
-https://github.com/kubernetes/kubeadm/issues/1031
+
 
 
