@@ -137,6 +137,10 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 systemctl restart kubelet
 kubectl get nodes
 ```
+- 워커노드  [ERROR FileContent--proc-sys-net-ipv4-ip_forward]: /proc/sys/net/ipv4/ip_forward contents are not set to 1
+```
+echo '1' > /proc/sys/net/ipv4/ip_forward 
+```
 
 
 
