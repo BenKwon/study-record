@@ -1,5 +1,5 @@
 
-comparator // comparable
-Arrays.sort
-vs
-Collections.sort
+comparator // comparable  
+Arrays.sort  
+vs  
+Collections.sort  
