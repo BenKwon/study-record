@@ -1,8 +1,6 @@
-
-comparator // comparable  
-Arrays.sort  
-vs  
-Collections.sort  
+# 키워드 정리
+- comparator  comparable  
+- Arrays.sort vs Collections.sort  
 
 ## 2차원 배열에서의 정렬
 > 2차원 배열에서 각 원소의 1번째 혹은 2번째로 원소중에 특정 원소로 정렬
