@@ -1,0 +1,2 @@
+- [간단한 vue 페이지 네이션](https://jsfiddle.net/matfish2/c9wp2k63)
+  - [vue-pagination-2](https://www.npmjs.com/package/vue-pagination-2)
