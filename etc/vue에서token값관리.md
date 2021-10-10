@@ -13,6 +13,7 @@ sessionStorage의 경우 탭별로 로그인 상태 정보가 다르다. 따라�
 
 ### 내 생각
 따라서 브라우저가 종료될때 vue 에서 localStorage를 비워주는 코드를 작성한다.
+하지만 okky.kr 같은 사이트의 경우 웹사이트를 종료해도 로그아웃이 되지 않는 것을 보아 상황별 요구사항에 맞게 하면 될 것 같다.
 #### main.js
 ```js
 import Vue from "vue";
