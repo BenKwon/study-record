@@ -1,5 +1,5 @@
 ## Vue에서 jwt에서 발급받은 token 값 관리
-1. vuex store 에 저장후 vue-persistedstore로 관리.
+1. vuex store 에 저장후 vue-persistedstate로 관리.
 
 > 위 방법을 사용할시 sessionStorage혹은 localStorge중에 사용하게 되는데  
 sessionStorage의 경우 탭별로 로그인 상태 정보가 다르다. 따라서 적합하지 않다고 판단.
